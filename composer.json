@@ -1,0 +1,17 @@
+{
+    "name": "aniket-magadum/http-client-logger",
+    "description": "This package logs all http client request in laravel.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "AniketMagadum\\HttpClientLogger\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aniket-magadum",
+            "email": "aniketmagadum77@gmail.com"
+        }
+    ],
+    "require": {}
+}
