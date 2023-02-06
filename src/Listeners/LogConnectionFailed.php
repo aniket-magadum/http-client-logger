@@ -2,7 +2,7 @@
 
 namespace AniketMagadum\HttpClientLogger\Listeners;
 
-class LogResponseReceived {
+class LogConnectionFailed {
     public function handle()
     {
         

@@ -2,18 +2,15 @@
 
 namespace AniketMagadum\HttpClientLogger\Providers;
 
+use AniketMagadum\HttpClientLogger\Listeners\LogConnectionFailed;
+use AniketMagadum\HttpClientLogger\Listeners\LogResponseReceived;
+use Event;
+use Illuminate\Http\Client\Events\ConnectionFailed;
+use Illuminate\Http\Client\Events\ResponseReceived;
 use Illuminate\Support\ServiceProvider;
 
 class HttpClientLoggerServiceProvider extends ServiceProvider
 {
-    protected $listen = [
-        'Illuminate\Http\Client\Events\ResponseReceived' => [
-            'AniketMagadum\HttpClientLogger\Listeners\LogResponseReceived',
-        ],
-        'Illuminate\Http\Client\Events\ConnectionFailed' => [
-            'AniketMagadum\HttpClientLogger\Listeners\LogConnectionFailed',
-        ],
-    ];
     /**
      * Bootstrap services.
      *
@@ -21,6 +18,7 @@ class HttpClientLoggerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        
+        Event::listen(ResponseReceived::class, LogResponseReceived::class);
+        Event::listen(ConnectionFailed::class, LogConnectionFailed::class);
     }
 }
