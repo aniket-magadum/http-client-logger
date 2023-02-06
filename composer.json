@@ -13,5 +13,12 @@
             "email": "aniketmagadum77@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AniketMagadum\\HttpClientLogger\\HttpClientLoggerServiceProvider"
+            ]
+        }
+    },
 }
