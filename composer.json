@@ -17,7 +17,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AniketMagadum\\HttpClientLogger\\HttpClientLoggerServiceProvider"
+                "AniketMagadum\\HttpClientLogger\\Providers\\HttpClientLoggerServiceProvider"
             ]
         }
     }
