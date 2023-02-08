@@ -14,16 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('http_client_logs', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('sequence');
+            $table->uuid('uuid')->unique()->index();
             $table->string('url');
             $table->string('method',10);
-            $table->text('request_body');
-            $table->text('response_body');
-            $table->text('request_headers');
-            $table->text('response_headers');
+            $table->text('request_body')->nullable();
+            $table->text('response_body')->nullable();
+            $table->text('request_headers')->nullable();
+            $table->text('response_headers')->nullable();
             $table->smallInteger('status_code');
             $table->decimal('response_time', 6, 2);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

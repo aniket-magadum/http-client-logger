@@ -18,7 +18,37 @@ class HttpClientLoggerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerPublishing();
+        $this->registerMigrations();
+        $this->registerRoutes();
+        $this->registerViews();
         Event::listen(ResponseReceived::class, LogResponseReceived::class);
         Event::listen(ConnectionFailed::class, LogConnectionFailed::class);
+    }
+
+    private function registerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../../database/migrations' => database_path('migrations'),
+            ], 'http-client-logger-migrations');
+        }
+    }
+
+    private function registerMigrations()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+        }
+    }
+
+    private function registerRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+    }
+
+    private function registerViews()
+    {
+        $this->loadViewsFrom(__DIR__ . "/../../resources/views",'http-logs');
     }
 }

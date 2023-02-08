@@ -3,6 +3,9 @@
     "description": "This package logs all http client request in laravel.",
     "type": "library",
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
             "AniketMagadum\\HttpClientLogger\\": "src/"
         }
