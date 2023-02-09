@@ -32,7 +32,19 @@ class HttpClientLoggerServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../../database/migrations' => database_path('migrations'),
             ], 'http-client-logger-migrations');
+
+            $this->publishes([
+                __DIR__.'/../../config/http-client-logger.php' => config_path('http-client-logger.php'),
+            ], 'http-client-logger-config');
+
         }
+    }
+
+    public function register()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/http-client-logger.php', 'http-client-logger'
+        );
     }
 
     private function registerMigrations()

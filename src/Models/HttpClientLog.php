@@ -10,4 +10,9 @@ class HttpClientLog extends Model
     public $timestamps = false;
 
     public $hidden = ['sequence'];
+
+    public function getConnectionName()
+    {
+        return config('http-client-logger.storage.database.connection');
+    }
 }
