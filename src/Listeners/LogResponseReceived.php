@@ -3,13 +3,14 @@
 namespace AniketMagadum\HttpClientLogger\Listeners;
 
 use AniketMagadum\HttpClientLogger\Models\HttpClientLog;
+use Illuminate\Support\Str;
 
 class LogResponseReceived
 {
     public function handle($event)
     {
         HttpClientLog::create([
-            'uuid' => (string) str()->uuid(),
+            'uuid' => (string) Str::uuid(),
             'batch' => get_http_logger_batch(),
             'url' => $event->request->url(),
             'method' => $event->request->method(),
