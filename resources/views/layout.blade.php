@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{ asset(mix('css/app.css', 'vendor/http-client-logger')) }}">
 </head>
 <body>
-    <script src="{{ asset(mix('app.js', 'vendor/http-client-logger')) }}"></script>
+    <div id="http-client-logs"></div>
+    <script src="{{ asset(mix('js/app.js','vendor/http-client-logger')) }}"></script>
 </body>
 </html>

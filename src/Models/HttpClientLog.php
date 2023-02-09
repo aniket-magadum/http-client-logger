@@ -8,4 +8,6 @@ class HttpClientLog extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public $hidden = ['sequence'];
 }

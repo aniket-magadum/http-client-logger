@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('http_client_logs', function (Blueprint $table) {
             $table->bigIncrements('sequence');
             $table->uuid('uuid')->unique()->index();
+            $table->string('batch')->index()->nullable();
             $table->string('url');
             $table->string('method',10);
             $table->text('request_body')->nullable();
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->text('response_headers')->nullable();
             $table->smallInteger('status_code');
             $table->decimal('response_time', 6, 2);
-            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('created_at')->useCurrent()->index();
         });
     }
 

@@ -10,6 +10,7 @@ class LogResponseReceived
     {
         HttpClientLog::create([
             'uuid' => (string) str()->uuid(),
+            'batch' => get_http_logger_batch(),
             'url' => $event->request->url(),
             'method' => $event->request->method(),
             'request_body' => $event->request->body(),
